@@ -1,0 +1,23 @@
+.tabbable
+  ul.nav.nav-tabs
+    - @majors.each do |major|
+      li
+        a href='#tab#{major.id}' data-toggle="tab" #{major.classname}
+  .tab-content
+    - @majors.each do |major|
+      .tab-pane id="tab#{major.id}"
+        .row-fluid
+          = simple_form_for [major, @dfile], html: { multipart: true } do |f|
+            .span3
+            .span3
+              h5.red Upload File
+              = f.file_field :store, required: true
+              = f.hidden_field :store_cache
+            .span3
+              = f.button :submit, "Submit"
+            .span3
+        table.table.table-hover
+          - major.dfiles.each do |d|
+            tr
+              td
+                = link_to d.file_name, [:down_file, major, d]
