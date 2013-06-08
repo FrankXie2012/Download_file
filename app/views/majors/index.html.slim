@@ -9,12 +9,12 @@
         .row-fluid
           = simple_form_for [major, @dfile], html: { multipart: true } do |f|
             .span3
+              h3 上传文件
             .span3
-              h5.red Upload File
               = f.file_field :store, required: true
               = f.hidden_field :store_cache
             .span3
-              = f.button :submit, "Submit"
+              = f.button :submit, "上传", class: 'btn btn-primary'
             .span3
         table.table.table-hover
           - major.dfiles.each do |d|
