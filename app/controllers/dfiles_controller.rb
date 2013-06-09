@@ -6,7 +6,6 @@ class DfilesController < ApplicationController
   def create
     @major = Major.find(params[:major_id])
     @dfile = @major.dfiles.build(params[:dfile])
-    ap @dfile
     respond_to do |format|
       if @dfile.save
         format.html { redirect_to majors_path, notice: 'File was successfully saved.' }
