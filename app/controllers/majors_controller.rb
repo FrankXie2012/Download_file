@@ -4,7 +4,7 @@ class MajorsController < ApplicationController
   def index
     @majors = Major.all
     @dfile = Dfile.new
-    # ap @dfile
+    @auth = params[:auth]
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @majors }

@@ -6,16 +6,20 @@
   .tab-content
     - @majors.each do |major|
       .tab-pane id="tab#{major.id}"
-        .row-fluid
-          = simple_form_for [major, @dfile], html: { multipart: true } do |f|
-            .span3
-              h3 上传文件
-            .span3
-              = f.file_field :store, required: true
-              = f.hidden_field :store_cache
-            .span3
-              = f.button :submit, "上传", class: 'btn btn-primary'
-            .span3
+        .pull-right
+          - if @auth == nil
+            = button_to "+ 上传文件", to_form_path, class: 'btn btn-success'
+        - if @auth != nil
+          .row-fluid
+            = simple_form_for [major, @dfile], html: { multipart: true } do |f|
+              .span3
+                h3 上传文件
+              .span3
+                = f.file_field :store, required: true
+                = f.hidden_field :store_cache
+              .span3
+                = f.button :submit, "上传", class: 'btn btn-primary'
+              .span3
         table.table.table-hover
           - major.dfiles.each do |d|
             tr

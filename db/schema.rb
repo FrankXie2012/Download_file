@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130608183657) do
+ActiveRecord::Schema.define(:version => 20130609152830) do
+
+  create_table "authentications", :force => true do |t|
+    t.string   "account"
+    t.string   "password"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "dfiles", :force => true do |t|
     t.string   "store"
