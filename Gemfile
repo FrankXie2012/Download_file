@@ -15,6 +15,7 @@ gem 'twitter-bootstrap-rails'
 gem 'bootstrap-sass'
 gem 'simple_form'
 gem 'awesome_print'
+gem 'thin'
 
 # uploader
 gem 'carrierwave'
