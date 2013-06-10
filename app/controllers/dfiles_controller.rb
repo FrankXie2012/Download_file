@@ -17,6 +17,16 @@ class DfilesController < ApplicationController
     end
   end
 
+  def destroy
+    @dfile = Dfile.find(params[:id])
+    @dfile.destroy
+
+    respond_to do |format|
+      format.html { redirect_to majors_url }
+      format.json { head :no_content }
+    end
+  end
+
   def down_file
     @dfile = Dfile.find(params[:id])
     send_file "public/#{@dfile.store}"

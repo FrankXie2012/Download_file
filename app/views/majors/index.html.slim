@@ -25,3 +25,6 @@
             tr
               td
                 = link_to d.file_name, [:down_file, major, d]
+                - if @auth != nil
+                  .pull-right
+                    = link_to '删除', major_dfile_path(major, d), :confirm => '确定删除这个文件？', :method => :delete
